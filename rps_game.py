@@ -23,7 +23,7 @@ win_con = {"rock": "scissors",
 while True:
 
   # Prompt user for input
-  user_input = input("Rock, paper, or scissors? (r,p,s or q to quit playing): ").lower()
+  user_input = input("Rock, paper, or scissors? (r,p,s or q): ").lower()
 
   # If user wants to quit playing
   if user_input == "q":
@@ -54,3 +54,11 @@ while True:
   # Else computer wins
   else:
     print("You lose")
+
+  # Prompts user if they want to continue after game ends
+  # If yes, then continue the loop
+  if input("Continue? (y,n): ") == 'y':
+    continue
+  # Else break the loop and end the game
+  else:
+    break
