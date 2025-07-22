@@ -1,5 +1,4 @@
 import random
-import emoji
 
 # Define choices
 choices = ["rock", "paper", "scissors"]
@@ -23,10 +22,8 @@ win_con = {"rock": "scissors",
 # Game Loop
 while True:
 
-  
   # Prompt user for input
   user_input = input("Rock, paper, or scissors? (r,p,s or q to quit playing): ").lower()
-
 
   # If user wants to quit playing
   if user_input == "q":
