@@ -21,7 +21,7 @@ def get_user_choice():
 
     # If user wants to quit playing
     if user_choice == "q":
-      break
+      quit()
 
     # If user enters invalid input
     if user_choice in choices:
@@ -29,18 +29,21 @@ def get_user_choice():
     else:
       print("Please enter a valid input")
 
-
+def display_choices():
+  # Print user and computer input as icon
+  print(f"You chose {choice_emoji[user_choice]}")
+  print(f"Computer chose {choice_emoji[computer_choice]}")
 
 # Game Loop
 while True:
+  # Creates user_choice variable and calls the function to get user input
   user_choice = get_user_choice()
 
   # Gets computer input
   computer_choice = random.choice(choices)
 
-  # Print user and computer input as icon
-  print(f"You chose {choice_emoji[user_choice]}")
-  print(f"Computer chose {choice_emoji[computer_choice]}")
+  # Creates display_choices function to show user and computer choices
+  display_choices()
 
   # If user choice an computer choice are same
   #   then draw
