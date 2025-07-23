@@ -1,55 +1,53 @@
 import random
 
-# Define choices
-choices = ["rock", "paper", "scissors"]
+
 # Define user choices
-user_choice = {"r": "rock",
-           "p": "paper",
-           "s": "scissors"}
+choices = ("r", "p", "s")
 
 # Choice emojis
-choice_emoji = {"rock": "🪨",
-                "paper": "📄",
-                "scissors": "✂️",
-                "r": "🪨",
+choice_emoji = {"r": "🪨",
                 "p": "📄",
                 "s": "✂️"}
 # Define win conditions through a library
-win_con = {"rock": "scissors",
-           "paper": "rock",
-           "scissors": "paper"}
+win_con = {"r": "s",
+           "p": "r",
+           "s": "p"}
+
+# Function to get the user choice and checks if user input is valid
+def get_user_choice():
+  while True:
+    # Prompt user for input
+    user_choice = input("Rock, paper, or scissors? (r,p,s or q): ").lower()
+
+    # If user wants to quit playing
+    if user_choice == "q":
+      break
+
+    # If user enters invalid input
+    if user_choice in choices:
+      return user_choice
+    else:
+      print("Please enter a valid input")
+
+
 
 # Game Loop
 while True:
-
-  # Prompt user for input
-  user_input = input("Rock, paper, or scissors? (r,p,s or q): ").lower()
-
-  # If user wants to quit playing
-  if user_input == "q":
-    break
-
-  # If user enters invalid input
-  if user_input not in user_choice:
-    print("Please enter a valid input")
-    continue
-
-  # Change input into response
-  user_pick = user_choice[user_input]
+  user_choice = get_user_choice()
 
   # Gets computer input
   computer_choice = random.choice(choices)
 
   # Print user and computer input as icon
-  print(f"You chose {choice_emoji[user_pick]}")
+  print(f"You chose {choice_emoji[user_choice]}")
   print(f"Computer chose {choice_emoji[computer_choice]}")
 
   # If user choice an computer choice are same
   #   then draw
-  if user_choice[user_input] == computer_choice:
+  if choices == computer_choice:
     print("You draw")
   # Otherwise, check the win condition: if the user's choice beats the computer's, the user wins
-  elif win_con[user_pick] == computer_choice:
+  elif win_con[user_choice] == computer_choice:
     print("You win")
   # Else computer wins
   else:
