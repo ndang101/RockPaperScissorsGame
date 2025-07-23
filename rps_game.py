@@ -29,22 +29,12 @@ def get_user_choice():
     else:
       print("Please enter a valid input")
 
-def display_choices():
+def display_choices(user_choice, computer_choice):
   # Print user and computer input as icon
   print(f"You chose {choice_emoji[user_choice]}")
   print(f"Computer chose {choice_emoji[computer_choice]}")
 
-# Game Loop
-while True:
-  # Creates user_choice variable and calls the function to get user input
-  user_choice = get_user_choice()
-
-  # Gets computer input
-  computer_choice = random.choice(choices)
-
-  # Creates display_choices function to show user and computer choices
-  display_choices()
-
+def determine_winner(user_choice, computer_choice):
   # If user choice an computer choice are same
   #   then draw
   if choices == computer_choice:
@@ -56,10 +46,27 @@ while True:
   else:
     print("You lose")
 
-  # Prompts user if they want to continue after game ends
-  # If yes, then continue the loop
-  if input("Continue? (y,n): ") == 'y':
-    continue
-  # Else break the loop and end the game
-  else:
-    break
+def play_game():
+  # Game Loop
+  while True:
+    # Creates user_choice variable and calls the function to get user input
+    user_choice = get_user_choice()
+
+    # Gets computer input
+    computer_choice = random.choice(choices)
+
+    # Calls display_choices function to show user and computer choices
+    display_choices(user_choice, computer_choice)
+
+    # Calls determine_winner function and displays winner
+    determine_winner(user_choice, computer_choice)
+
+    # Prompts user if they want to continue after game ends
+    # If yes, then continue the loop
+    if input("Continue? (y,n): ") == 'y':
+      continue
+    # Else break the loop and end the game
+    else:
+      break
+
+play_game()
